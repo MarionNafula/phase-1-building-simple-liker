@@ -1,3 +1,4 @@
+
 // Defining text characters for the empty and full hearts for you to use later.
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
@@ -21,5 +22,16 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
         resolve("Pretend remote server notified of action!");
       }
     }, 300);
+  });
+}
+mimicServerCallback(server, "ping", "ping server);", "ping server");
+mimicServerCallback(server, "pong", "pong server);", "pong server");
+mimicServerCallback(server, "error", "error server);", "error server");
+
+function mimicServerCallback(server, method, response, request) {
+  server.on(method, function(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write(response);
+    res.end();
   });
 }
